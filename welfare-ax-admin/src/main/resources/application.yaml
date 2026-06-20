@@ -1,0 +1,11 @@
+# 프로파일 지정:
+#   로컬 개발: -Dspring.profiles.active=local
+#   개발 서버: -Dspring.profiles.active=dev
+#   운영:      -Dspring.profiles.active=prod
+
+spring:
+  application:
+    name: welfare-ax-admin
+
+server:
+  port: 8081

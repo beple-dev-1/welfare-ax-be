@@ -1,10 +1,12 @@
-package com.beplepay.welfareaxbe;
+package com.beplepay.welfareaxbe.user;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest
-class WelfareAxApplicationTests {
+@ActiveProfiles("local")
+class WelfareAxUserApplicationTests {
 
     @Test
     void contextLoads() {
