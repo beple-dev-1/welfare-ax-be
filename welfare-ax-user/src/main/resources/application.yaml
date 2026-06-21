@@ -6,6 +6,11 @@
 spring:
   application:
     name: welfare-ax-user
+  profiles:
+    group:
+      # local 프로파일 활성화 시 api 프로파일을 함께 활성화한다
+      local:
+        - api
 
 server:
   port: 8080

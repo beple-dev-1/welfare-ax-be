@@ -24,6 +24,9 @@ public enum ErrorCode {
     UNAUTHORIZED("E005", "인증이 필요합니다", HttpStatus.UNAUTHORIZED),
     FORBIDDEN("E006", "접근 권한이 없습니다", HttpStatus.FORBIDDEN),
 
+    // 외부 연동 — 외부 API 호출 오류 (E1xx)
+    EXTERNAL_API_ERROR("E101", "외부 API 호출에 실패했습니다", HttpStatus.BAD_GATEWAY),
+
     // 기타 — 직접 메시지 지정 시 사용
     UNKNOWN("E999", "기타 오류", HttpStatus.INTERNAL_SERVER_ERROR);
 
