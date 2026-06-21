@@ -58,4 +58,8 @@ src/main/resources/application-local.yaml
 CLAUDE.md
 HANDOFF.md
 HANDOFF_HISTORY.md
-target/
+
+### 산출물 — 개발 브리프·계획서·테스트 결과서 (feature 브랜치 단위 관리, PR 머지 시 main에 포함)
+# target/ 은 git으로 추적한다. 각 개발자는 자신의 feature 브랜치에서만 작성하고,
+# PR 머지를 통해 main에 반영한다. 타 개발자 브랜치의 target/ 문서와 간섭되지 않는다.
+!target/
