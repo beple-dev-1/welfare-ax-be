@@ -23,6 +23,8 @@ import org.springframework.util.StreamUtils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import com.beplepay.welfareaxbe.common.util.MdcConstants;
+
 /**
  * RestClient 요청·응답 공통 로깅 인터셉터.
  *
@@ -85,7 +87,7 @@ public class HttpLoggingInterceptor implements ClientHttpRequestInterceptor {
      * @return traceId가 헤더에 추가된 요청 (traceId 없으면 원본 반환)
      */
     private HttpRequest propagateTraceId(HttpRequest request) {
-        String traceId = MDC.get("traceId");
+        String traceId = MDC.get(MdcConstants.TRACE_ID_KEY);
         // MDC에 traceId가 없으면 TraceIdFilter 미적용 환경 — 원본 요청 그대로 사용
         if (traceId == null) {
             return request;

@@ -54,6 +54,8 @@ public class SecurityConfig {
                         // 인증 없이 접근 허용: 로그인·회원가입, 헬스체크
                         .requestMatchers("/api/v1/auth/**").permitAll()
                         .requestMatchers("/actuator/health").permitAll()
+                        // Swagger UI 접근 허용 — 운영 환경은 springdoc.swagger-ui.enabled=false로 이중 차단
+                        .requestMatchers("/swagger-ui/**", "/swagger-ui.html", "/v3/api-docs/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .exceptionHandling(e -> e

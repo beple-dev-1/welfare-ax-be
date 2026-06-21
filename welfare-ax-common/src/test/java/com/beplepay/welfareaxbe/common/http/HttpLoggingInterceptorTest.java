@@ -24,6 +24,8 @@ import org.springframework.mock.http.client.MockClientHttpRequest;
 import org.springframework.mock.http.client.MockClientHttpResponse;
 import org.springframework.util.StreamUtils;
 
+import com.beplepay.welfareaxbe.common.util.MdcConstants;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
@@ -47,7 +49,7 @@ class HttpLoggingInterceptorTest {
     @AfterEach
     void tearDown() {
         // 테스트 간 MDC 오염 방지
-        MDC.remove("traceId");
+        MDC.remove(MdcConstants.TRACE_ID_KEY);
     }
 
     @Test
@@ -138,7 +140,7 @@ class HttpLoggingInterceptorTest {
 
     @Test
     void intercept_MDC_traceId있으면_X_Trace_Id헤더전파() throws IOException {
-        MDC.put("traceId", "test-trace-id-1234");
+        MDC.put(MdcConstants.TRACE_ID_KEY, "test-trace-id-1234");
 
         MockClientHttpResponse mockResponse = new MockClientHttpResponse(
                 new ByteArrayInputStream("{}".getBytes()), HttpStatus.OK);
@@ -159,7 +161,7 @@ class HttpLoggingInterceptorTest {
     @Test
     void intercept_MDC_traceId없으면_X_Trace_Id헤더없음() throws IOException {
         // MDC에 traceId 없는 상태 (TraceIdFilter 미적용 환경)
-        MDC.remove("traceId");
+        MDC.remove(MdcConstants.TRACE_ID_KEY);
 
         MockClientHttpResponse mockResponse = new MockClientHttpResponse(
                 new ByteArrayInputStream("{}".getBytes()), HttpStatus.OK);

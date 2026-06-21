@@ -14,12 +14,14 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import com.beplepay.welfareaxbe.common.util.MdcConstants;
+
 /**
  * 모든 인바운드 HTTP 요청에 UUID 기반 traceId를 부여하는 서블릿 필터.
  *
  * <p>동작 순서:
  * <ol>
- *   <li>UUID를 생성하여 MDC {@value TRACE_ID_KEY} 키에 저장한다.
+ *   <li>UUID를 생성하여 MDC {@code MdcConstants#TRACE_ID_KEY} 키에 저장한다.
  *   <li>응답 헤더 {@value TRACE_ID_HEADER}에 traceId를 설정하여 클라이언트에 반환한다.
  *   <li>필터 체인 실행 후 finally 블록에서 MDC를 제거하여 스레드 재사용 시 누수를 방지한다.
  * </ol>
@@ -31,7 +33,6 @@ import org.springframework.web.filter.OncePerRequestFilter;
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class TraceIdFilter extends OncePerRequestFilter {
 
-    static final String TRACE_ID_KEY = "traceId";
     static final String TRACE_ID_HEADER = "X-Trace-Id";
 
     /**
@@ -51,7 +52,7 @@ public class TraceIdFilter extends OncePerRequestFilter {
             FilterChain filterChain
     ) throws ServletException, IOException {
         String traceId = UUID.randomUUID().toString();
-        MDC.put(TRACE_ID_KEY, traceId);
+        MDC.put(MdcConstants.TRACE_ID_KEY, traceId);
         // 응답 헤더에 traceId를 설정하여 클라이언트가 요청 흐름을 추적 가능하게 한다
         response.setHeader(TRACE_ID_HEADER, traceId);
         try {
@@ -59,7 +60,7 @@ public class TraceIdFilter extends OncePerRequestFilter {
         } finally {
             // 스레드풀 재사용 시 이전 traceId가 다음 요청에 누수되지 않도록 제거
             // MDC.clear() 대신 remove()를 사용하여 다른 MDC 항목은 보존한다
-            MDC.remove(TRACE_ID_KEY);
+            MDC.remove(MdcConstants.TRACE_ID_KEY);
         }
     }
 }

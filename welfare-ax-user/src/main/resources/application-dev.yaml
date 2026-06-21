@@ -1,0 +1,12 @@
+# dev 환경 설정
+# 개발 서버에서 API 문서 확인 및 테스트가 가능하도록 Swagger UI를 활성화한다
+
+# dev 환경 Swagger UI 활성화
+springdoc:
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+    try-it-out-enabled: true
+  api-docs:
+    enabled: true
+    path: /v3/api-docs

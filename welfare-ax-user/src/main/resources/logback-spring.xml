@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
+  <!-- traceId 키는 MdcConstants.TRACE_ID_KEY("traceId")와 반드시 일치해야 한다. 키 변경 시 이 패턴도 함께 수정한다. -->
   <property name="LOG_PATTERN"
     value="[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%thread] [%X{traceId:-NO_TRACE}] %-5level %logger{36} - %msg%n"/>
 

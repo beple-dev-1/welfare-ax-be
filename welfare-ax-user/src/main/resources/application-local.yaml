@@ -16,3 +16,13 @@ spring:
 jwt:
   secret: local-dev-secret-key-for-welfare-ax-be-must-be-at-least-32-characters
   expiration: 43200  # 12시간 (초 단위)
+
+# 로컬 환경 Swagger UI 활성화
+springdoc:
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+    try-it-out-enabled: true
+  api-docs:
+    enabled: true
+    path: /v3/api-docs

@@ -10,6 +10,8 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import java.io.IOException;
 
+import com.beplepay.welfareaxbe.common.util.MdcConstants;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -24,7 +26,7 @@ class TraceIdFilterTest {
     void setUp() {
         filter = new TraceIdFilter();
         // 테스트 간 MDC 오염 방지
-        MDC.remove(TraceIdFilter.TRACE_ID_KEY);
+        MDC.remove(MdcConstants.TRACE_ID_KEY);
     }
 
     @Test
@@ -33,7 +35,7 @@ class TraceIdFilterTest {
         MockHttpServletResponse response = new MockHttpServletResponse();
         // 필터 체인 실행 중 MDC에 traceId가 설정되어 있는지 캡처
         String[] capturedTraceId = new String[1];
-        FilterChain filterChain = (req, res) -> capturedTraceId[0] = MDC.get(TraceIdFilter.TRACE_ID_KEY);
+        FilterChain filterChain = (req, res) -> capturedTraceId[0] = MDC.get(MdcConstants.TRACE_ID_KEY);
 
         filter.doFilterInternal(request, response, filterChain);
 
@@ -53,7 +55,7 @@ class TraceIdFilterTest {
         filter.doFilterInternal(request, response, filterChain);
 
         // 필터 체인 완료 후 MDC에 traceId가 제거되어야 한다
-        assertThat(MDC.get(TraceIdFilter.TRACE_ID_KEY)).isNull();
+        assertThat(MDC.get(MdcConstants.TRACE_ID_KEY)).isNull();
     }
 
     @Test
@@ -68,7 +70,7 @@ class TraceIdFilterTest {
                 .hasMessage("강제 예외 발생");
 
         // 예외 발생 후에도 finally 블록으로 MDC가 반드시 제거되어야 한다
-        assertThat(MDC.get(TraceIdFilter.TRACE_ID_KEY)).isNull();
+        assertThat(MDC.get(MdcConstants.TRACE_ID_KEY)).isNull();
     }
 
     @Test
@@ -76,7 +78,7 @@ class TraceIdFilterTest {
         MockHttpServletRequest request = new MockHttpServletRequest();
         MockHttpServletResponse response = new MockHttpServletResponse();
         String[] capturedTraceId = new String[1];
-        FilterChain filterChain = (req, res) -> capturedTraceId[0] = MDC.get(TraceIdFilter.TRACE_ID_KEY);
+        FilterChain filterChain = (req, res) -> capturedTraceId[0] = MDC.get(MdcConstants.TRACE_ID_KEY);
 
         filter.doFilterInternal(request, response, filterChain);
 
