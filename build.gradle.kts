@@ -7,7 +7,7 @@ plugins {
 allprojects {
     group = "com.beplepay"
     version = "0.0.1-SNAPSHOT"
-    description = "welfare-ax-be"
+    description = "we-adk-welfare"
 
     repositories {
         mavenCentral()
