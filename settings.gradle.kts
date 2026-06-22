@@ -1,7 +1,7 @@
-rootProject.name = "welfare-ax-be"
+rootProject.name = "we-adk-welfare"
 
-include("welfare-ax-common")
-include("welfare-ax-domain")
-include("welfare-ax-user")
-include("welfare-ax-admin")
-include("welfare-ax-batch")
+include("we-adk-welfare-common")
+include("we-adk-welfare-domain")
+include("we-adk-welfare-user")
+include("we-adk-welfare-admin")
+include("we-adk-welfare-batch")

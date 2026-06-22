@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+  <!-- traceId 키는 MdcConstants.TRACE_ID_KEY("traceId")와 반드시 일치해야 한다. 키 변경 시 이 패턴도 함께 수정한다. -->
+  <property name="LOG_PATTERN"
+    value="[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%thread] [%X{traceId:-NO_TRACE}] %-5level %logger{36} - %msg%n"/>
+
+  <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>${LOG_PATTERN}</pattern>
+    </encoder>
+  </appender>
+
+  <!-- 로컬 환경: 애플리케이션 DEBUG, SQL 및 파라미터 바인딩 로깅 포함 -->
+  <springProfile name="local">
+    <root level="INFO">
+      <appender-ref ref="CONSOLE"/>
+    </root>
+    <logger name="com.beplepay.weadk.welfare" level="DEBUG"/>
+    <logger name="org.hibernate.SQL" level="DEBUG"/>
+    <logger name="org.hibernate.type.descriptor.sql" level="TRACE"/>
+  </springProfile>
+
+  <!-- 기본(운영 포함): INFO 레벨, Body 로깅(TRACE) 비활성화 — PII 보호 -->
+  <springProfile name="!local">
+    <root level="INFO">
+      <appender-ref ref="CONSOLE"/>
+    </root>
+    <logger name="com.beplepay.weadk.welfare" level="INFO"/>
+  </springProfile>
+
+</configuration>
