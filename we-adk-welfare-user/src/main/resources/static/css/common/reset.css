@@ -1,0 +1,54 @@
+/* ====================================================
+   Reset — AstaSans 폰트 선언
+   Bootstrap Reboot이 기본 리셋을 담당하므로
+   폰트 선언과 최소 보완만 정의한다.
+   출처: wel-portal React 프로젝트 assets/font/astasans/
+   ==================================================== */
+
+@font-face {
+    font-family: "AstaSans";
+    src: url("/fonts/asta-sans-v3-korean_latin-Light.woff2") format("woff2");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "AstaSans";
+    src: url("/fonts/asta-sans-v3-korean_latin-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "AstaSans";
+    src: url("/fonts/asta-sans-v3-korean_latin-Medium.woff2") format("woff2");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "AstaSans";
+    src: url("/fonts/asta-sans-v3-korean_latin-SemiBold.woff2") format("woff2");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "AstaSans";
+    src: url("/fonts/asta-sans-v3-korean_latin-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "AstaSans";
+    src: url("/fonts/asta-sans-v3-korean_latin-ExtraBold.woff2") format("woff2");
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}

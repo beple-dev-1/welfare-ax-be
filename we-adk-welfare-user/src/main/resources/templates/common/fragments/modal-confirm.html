@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<!--
+    공통 확인/취소 모달 Fragment
+    JS에서 openConfirmModal(message, onConfirm, title?) 로 제어한다.
+    페이지 </body> 직전에 include한다.
+-->
+<div th:fragment="confirmModal"
+     class="modal fade" id="confirmModal" tabindex="-1"
+     aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-0 pb-0">
+                <h5 class="modal-title" id="confirmModalLabel"></h5>
+            </div>
+            <div class="modal-body" id="confirmModalBody"></div>
+            <div class="modal-footer border-0 pt-0">
+                <button type="button" class="btn btn-outline-secondary"
+                        data-bs-dismiss="modal" id="btnConfirmCancel">취소</button>
+                <button type="button" class="btn btn-primary"
+                        id="btnConfirmAction">확인</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<!--
+    공통 JS 로드 Fragment
+    파라미터:
+      extraScript — 페이지별 JS (없으면 생략)
+
+    로드 순서 (고정):
+      1. jquery
+      2. bootstrap.bundle
+      3. CSRF 인라인 변수 (_csrfToken_, _csrfHeader_)
+      4. ui-common.js  (showToast, openConfirmModal 정의)
+      5. ajax-setup.js (showToast 사용 — ui-common 이후 로드)
+      6. validation.js
+      7. extraScript (페이지별 JS)
+
+    사용 예:
+      th:replace="~{layout/scripts :: scripts(~{::page-js})}"
+      th:ref="page-js"  →  <script th:src="@{/js/ceremony/ceremony-list.js}"></script>
+-->
+<th:block th:fragment="scripts(extraScript)">
+
+    <!-- 외부 라이브러리 (수정 금지) -->
+    <script th:src="@{/js/lib/jquery-3.7.1.min.js}"></script>
+    <script th:src="@{/js/lib/bootstrap.bundle.min.js}"></script>
+
+    <!-- CSRF 토큰 — ajax-setup.js 보다 먼저 선언 -->
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        const _csrfToken_  = /*[[${_csrf.token}]]*/ "";
+        const _csrfHeader_ = /*[[${_csrf.headerName}]]*/ "X-CSRF-TOKEN";
+        /*]]>*/
+    </script>
+
+    <!-- 공통 JS -->
+    <script th:src="@{/js/common/ui-common.js}"></script>
+    <script th:src="@{/js/common/ajax-setup.js}"></script>
+    <script th:src="@{/js/common/validation.js}"></script>
+
+    <!-- 페이지별 JS 주입 (없으면 생략) -->
+    <th:block th:if="${extraScript != null}" th:replace="${extraScript}" />
+
+</th:block>
+</body>
+</html>

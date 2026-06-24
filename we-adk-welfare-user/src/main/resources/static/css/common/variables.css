@@ -1,0 +1,43 @@
+/* ====================================================
+   CSS Custom Properties — Welfare Portal Design Tokens
+   출처: wel-portal React 프로젝트 styles/common.scss :root
+   네임스페이스: --wf-* (Bootstrap --bs-* 충돌 방지)
+   ==================================================== */
+
+:root {
+    /* 브랜드 색상 */
+    --wf-color-point:   #05141F;
+    --wf-color-white:   #FFFFFF;
+    --wf-color-red:     #CE302C;
+    --wf-color-green:   #00A771;
+
+    /* 그레이 스케일 */
+    --wf-gray-lv8: #303E48;
+    --wf-gray-lv7: #636D74;
+    --wf-gray-lv6: #8D959A;
+    --wf-gray-lv5: #CDD0D2;
+
+    /* 배경색 */
+    --wf-bg1: #F3F4F5;
+    --wf-bg2: #F7F7F7;
+
+    /* Border-radius (React md-rem 값을 px로 변환) */
+    --wf-radius-lv1: 2px;
+    --wf-radius-lv2: 4px;
+    --wf-radius-lv3: 6px;
+    --wf-radius-lv4: 8px;
+    --wf-radius-lv5: 10px;
+    --wf-radius-lv6: 12px;
+    --wf-radius-lv7: 16px;
+    --wf-radius-lv8: 32px;
+
+    /* Bootstrap 5 변수 재정의 */
+    --bs-body-font-family:  "AstaSans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --bs-body-color:        var(--wf-gray-lv8);
+    --bs-primary:           #05141F;
+    --bs-primary-rgb:       5, 20, 31;
+    --bs-link-color:        var(--wf-color-point);
+    --bs-border-radius:     var(--wf-radius-lv4);
+    --bs-border-radius-lg:  var(--wf-radius-lv6);
+    --bs-border-radius-sm:  var(--wf-radius-lv2);
+}

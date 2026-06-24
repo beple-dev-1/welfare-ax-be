@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<!--
+    헤더 Fragment
+    파라미터:
+      leftSlot  — 좌측 슬롯 (뒤로가기, 홈 버튼 등). null 이면 빈 공간.
+      title     — 중앙 타이틀 텍스트.
+      rightSlot — 우측 슬롯 (알림, 메뉴 등). null 이면 빈 공간.
+
+    사용 예:
+      th:replace="~{layout/header :: header(~{::back-btn}, '경조사 신청', ~{})}"
+-->
+<header th:fragment="header(leftSlot, title, rightSlot)" class="header">
+
+    <!-- 좌측 슬롯 -->
+    <nav class="navi navi-left">
+        <th:block th:if="${leftSlot != null}" th:replace="${leftSlot}" />
+    </nav>
+
+    <!-- 중앙: 페이지 타이틀 -->
+    <div class="header-center">
+        <span class="header__title" th:text="${title}"></span>
+    </div>
+
+    <!-- 우측 슬롯 -->
+    <nav class="navi navi-right">
+        <th:block th:if="${rightSlot != null}" th:replace="${rightSlot}" />
+    </nav>
+
+</header>
+</body>
+</html>

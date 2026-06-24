@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<!--
+    공통 페이지네이션 Fragment
+    파라미터:
+      pageInfo — Spring Data Page 객체 (number, totalPages, first, last)
+      baseUrl  — 페이지 링크 기준 URL (예: "/ceremony/list")
+
+    사용 예:
+      th:replace="~{common/fragments/pagination :: pagination(${page}, '/ceremony/list')}"
+-->
+<nav th:fragment="pagination(pageInfo, baseUrl)"
+     aria-label="페이지 네비게이션"
+     class="d-flex justify-content-center mt-4">
+    <ul class="pagination">
+
+        <!-- 이전 -->
+        <li class="page-item" th:classappend="${pageInfo.first} ? 'disabled'">
+            <a class="page-link"
+               th:href="@{${baseUrl}(page=${pageInfo.number - 1})}">이전</a>
+        </li>
+
+        <!-- 페이지 번호 -->
+        <li class="page-item"
+            th:each="i : ${#numbers.sequence(0, pageInfo.totalPages - 1)}"
+            th:classappend="${i == pageInfo.number} ? 'active'">
+            <a class="page-link"
+               th:href="@{${baseUrl}(page=${i})}"
+               th:text="${i + 1}"></a>
+        </li>
+
+        <!-- 다음 -->
+        <li class="page-item" th:classappend="${pageInfo.last} ? 'disabled'">
+            <a class="page-link"
+               th:href="@{${baseUrl}(page=${pageInfo.number + 1})}">다음</a>
+        </li>
+
+    </ul>
+</nav>
+</body>
+</html>

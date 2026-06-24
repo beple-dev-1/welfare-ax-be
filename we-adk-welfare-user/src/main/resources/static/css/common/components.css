@@ -1,0 +1,75 @@
+/* ====================================================
+   Components — Bootstrap 미포함 공통 UI 구조
+   조건: Bootstrap 대체 불가 AND 2개 이상 화면에서 반복
+   출처: wel-portal React 프로젝트 styles/common.scss
+   ==================================================== */
+
+/* ===================================================================
+   Form Item
+   적용 화면: 신청, 상세 등 입력 폼이 있는 모든 화면
+   Bootstrap .mb-3 + .form-label + .form-text 조합으로 대체 불가한
+   label/input/hint 수직 구조와 일관된 간격을 보장하는 래퍼
+   =================================================================== */
+.form-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-item + .form-item {
+    margin-top: 1.25rem;
+}
+
+/* ===================================================================
+   Notice Container
+   적용 화면: 신청 화면 '꼭 알아두세요', 상세 화면 안내사항 등
+   Bootstrap .alert와 다름 — 배경 없이 아이콘 + 텍스트 나열 구조
+   =================================================================== */
+.notice-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.notice-header {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.notice__title {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--wf-gray-lv8);
+    line-height: 1;
+}
+
+.notice__message {
+    font-size: 0.875rem;
+    color: var(--wf-gray-lv7);
+    line-height: 1.6;
+}
+
+/* 불릿 prefix */
+.desc-bullet::before {
+    content: "·";
+    margin-right: 4px;
+    color: var(--wf-gray-lv7);
+}
+
+/* ===================================================================
+   Data None
+   적용 화면: 목록 조회 결과 없음, 신청 내역 없음 등
+   Bootstrap 미포함 — 빈 상태 전용 중앙 정렬 레이아웃
+   =================================================================== */
+.data-none {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 2.5rem 1rem;
+    text-align: center;
+    color: var(--wf-gray-lv7);
+    font-size: 0.875rem;
+}

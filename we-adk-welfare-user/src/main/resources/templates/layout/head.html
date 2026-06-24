@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(title, extraCss)">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title th:text="${title} + ' | 비플복지'">비플복지</title>
+
+    <!-- 외부 라이브러리 (수정 금지) -->
+    <link rel="stylesheet" th:href="@{/css/lib/bootstrap.min.css}" />
+
+    <!-- 공통 CSS (로드 순서 고정) -->
+    <link rel="stylesheet" th:href="@{/css/common/variables.css}" />
+    <link rel="stylesheet" th:href="@{/css/common/reset.css}" />
+    <link rel="stylesheet" th:href="@{/css/common/layout.css}" />
+    <link rel="stylesheet" th:href="@{/css/common/components.css}" />
+    <link rel="stylesheet" th:href="@{/css/common/helper.css}" />
+
+    <!-- 페이지별 CSS 주입 (없으면 생략) -->
+    <th:block th:if="${extraCss != null}" th:replace="${extraCss}" />
+</head>
+</html>

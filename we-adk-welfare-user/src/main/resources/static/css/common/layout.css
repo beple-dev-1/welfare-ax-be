@@ -1,0 +1,110 @@
+/* ====================================================
+   Layout — 공통 레이아웃 구조
+   출처: wel-portal React 프로젝트 styles/common.scss
+   모바일 퍼스트 단일 컬럼. 860px 이상에서 중앙 정렬.
+   ==================================================== */
+
+/* === 기본 쉘 === */
+.wrap {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+}
+
+/* === 헤더 === */
+.header {
+    z-index: 15;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 48px;
+    padding: 0 8px;
+    background-color: #fff;
+    border-bottom: 1px solid var(--wf-gray-lv5);
+    box-sizing: border-box;
+}
+
+.header .navi {
+    flex-shrink: 0;
+}
+
+.header .header-center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header__title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--wf-color-point);
+    line-height: 1;
+}
+
+/* === 메인 콘텐츠 === */
+.container-wrap {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* 표준 좌우 패딩 24px */
+.container-padding--def {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+/* === 페이지 헤더 === */
+.page-header {
+    padding: 1.5rem 1.5rem 1rem;
+}
+
+.page-header__title {
+    font-size: 1.625rem;
+    font-weight: 700;
+    color: var(--wf-color-point);
+    line-height: 1.38;
+}
+
+/* === 하단 고정 버튼바 === */
+.action-bar--fixed {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 16;
+    background-color: #fff;
+    padding: 0.75rem 1rem 1.5rem;
+    border-top: 1px solid var(--wf-gray-lv5);
+}
+
+/* === 구분선 === */
+.divide {
+    border: none;
+    border-top: 1px solid var(--wf-gray-lv5);
+    margin: 1.5rem 0;
+}
+
+/* === 웹 뷰포트 (860px 이상) === */
+@media (min-width: 860px) {
+    .header,
+    .container-wrap {
+        max-width: 860px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .action-bar--fixed {
+        position: static;
+        border-top: 1px solid var(--wf-gray-lv5);
+        padding: 1.5rem 0;
+    }
+}

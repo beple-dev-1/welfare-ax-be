@@ -1,0 +1,26 @@
+/* ====================================================
+   Helper — Bootstrap 미포함 유틸리티
+   Bootstrap 5 유틸리티로 대체 불가한 클래스만 정의.
+   text-align, flex, spacing 등은 Bootstrap을 사용한다.
+   ==================================================== */
+
+/* 스크린리더 전용 텍스트 */
+.blind {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* 1줄 말줄임 */
+.ellipsis-line--1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+}
